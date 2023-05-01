@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "working-time-recording-angular": {
+    "working-time-recorder-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/working-time-recording-angular",
+            "outputPath": "dist/working-time-recorder-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "working-time-recording-angular:build:production"
+              "browserTarget": "working-time-recorder-angular:build:production"
             },
             "development": {
-              "browserTarget": "working-time-recording-angular:build:development"
+              "browserTarget": "working-time-recorder-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "working-time-recording-angular:build"
+            "browserTarget": "working-time-recorder-angular:build"
           }
         },
         "test": {
