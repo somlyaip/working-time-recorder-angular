@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import WorkingTimeRecord from "./working-time-calculation/working-time-record";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'working-time-recorder-angular';
+  workingTimeRecord: WorkingTimeRecord | undefined;
+
+  updateWorkingTimeRecord(workingTimeRecord: WorkingTimeRecord | undefined) {
+    this.workingTimeRecord = workingTimeRecord;
+  }
 }

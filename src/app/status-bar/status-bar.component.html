@@ -1,7 +1,19 @@
 <div class="flex flex-col items-center">
   <p class="font-bold text-lg m-2">{{isWorkingNow ? 'Working' : 'Not working'}}</p>
-  <button class="bg-amber-300 p-2 rounded hover:bg-amber-400"
-          (click)="toggleIsWorkingNow()">
-    {{isWorkingNow ? 'Stop working' : 'Start working'}}
-  </button>
+  <div class="flex gap-x-1">
+    <button *ngIf="stateMachine.canStartWorking()"
+            (click)="stateMachine.startWorking(); calculateWorkingTimeRecord()"
+            class="bg-amber-300 p-2 rounded hover:bg-amber-400">
+      Start working
+    </button>
+    <button *ngIf="stateMachine.canStopWorking()"
+            (click)="stateMachine.stopWorking(); calculateWorkingTimeRecord()"
+            class="bg-amber-300 p-2 rounded hover:bg-amber-400">
+      Stop working
+    </button>
+  </div>
+  <p *ngIf="workingTimeRecord !== undefined" class="text-center pt-4">
+    You worked {{workingTimeRecord!.worked.hours}} hours and
+    {{workingTimeRecord!.worked.minutes}} minutes
+  </p>
 </div>

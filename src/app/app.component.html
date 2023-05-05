@@ -1,2 +1,4 @@
 <app-header />
-<app-status-bar />
+<app-working-time-chart [workingTimeRecord]="workingTimeRecord" />
+<app-status-bar [workingTimeRecord]="workingTimeRecord"
+                (workingTimeRecordUpdated)="updateWorkingTimeRecord($event)" />

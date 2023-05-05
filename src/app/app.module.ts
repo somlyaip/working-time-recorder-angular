@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { HeaderComponent } from './header/header.component';
+import {NgxEchartsModule} from "ngx-echarts";
+import { WorkingTimeChartComponent } from './working-time-chart/working-time-chart.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,16 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxEchartsModule.forRoot({
+      /**
+       * This will import all modules from echarts.
+       * If you only need custom modules,
+       * please refer to [Custom Build] section.
+       */
+      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+    }),
+    WorkingTimeChartComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
