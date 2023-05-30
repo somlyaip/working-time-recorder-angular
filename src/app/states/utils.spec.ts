@@ -1,7 +1,7 @@
 import {replaceTime} from "./utils";
 
 describe('replaceTime', () => {
-  it('', () => {
+  it('should replaces hours and minutes', () => {
     const inputDate = new Date('2023-05-06T08:45:20Z');
 
     const outputDate = replaceTime(inputDate, { hours: 11, minutes: 9 });
