@@ -12,3 +12,11 @@ export interface CanStartWorkingState extends State {
 export interface CanStopWorkingState extends State {
   stopWorking(workingTimeService: WorkingTimeService, endTime: Time): State;
 }
+
+export interface CanTakeBreakState extends State {
+  takeBreak(workingTimeService: WorkingTimeService, startTime: Time): State;
+}
+
+export interface CanFinishBreakState extends State {
+  finishBreak(workingTimeService: WorkingTimeService, endTime: Time): State;
+}
