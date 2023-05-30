@@ -1,6 +1,8 @@
-import {CanStartWorkingState, State} from "./states";
+import {CanStartWorkingState, State} from "./state-types";
 import WorkingState from "./working-state";
 import {WorkingTimeService} from "../working-time-calculation/working-time.service";
+import {Time} from "@angular/common";
+import {replaceTime} from "./utils";
 
 export default class NotWorkingState implements CanStartWorkingState {
 
@@ -8,8 +10,9 @@ export default class NotWorkingState implements CanStartWorkingState {
     return "Not working";
   }
 
-  startWorking(workingTimeService: WorkingTimeService): State {
-    workingTimeService.startTime = new Date();
+  // TODO: test it
+  startWorking(workingTimeService: WorkingTimeService, startTime: Time): State {
+    workingTimeService.startTime = replaceTime(new Date(), startTime);
     return new WorkingState();
   }
 }
