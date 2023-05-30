@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import WorkingTimeRecord from "./working-time-record";
 import Duration from "./duration";
+import Period from "./period";
 
 export const DAILY_WORKING_HOURS = 8;
 export const DAILY_WORKING_MINUTES = DAILY_WORKING_HOURS * 60;
@@ -10,20 +11,28 @@ export const DAILY_WORKING_MINUTES = DAILY_WORKING_HOURS * 60;
 })
 export class WorkingTimeService {
 
-  startTime?: Date;
-  endTime?: Date;
+  #workingPeriods = new Array<Period>();
+  #takingBreaksPeriods= new Array<Period>();
+
+  startNewWorkingPeriod(startDate: Date) {
+    this.#workingPeriods.push(new Period(startDate));
+  }
+
+  finishLastWorkingPeriod(endDate: Date) {
+    this.#workingPeriods[this.#workingPeriods.length - 1].endDate = endDate;
+  }
 
   // TODO: use optional or any other solution instead of ... | undefined
   calculateWorkingTimeRecord(): WorkingTimeRecord | undefined {
-    if (this.startTime === undefined || this.endTime === undefined) {
-      console.log('Both startTime and endTime must be set before start recalculation');
+    if (this.#workingPeriods.length == 0) {
+      console.log('You have to set at least one working period before start recalculation');
       return undefined;
     }
 
-    const millisecondsElapsed = this.endTime.getTime() - this.startTime.getTime();
-    const minutesWorked = Math.round(millisecondsElapsed / 1000 / 60);
+    let minutesWorked = 0;
+    this.#workingPeriods.forEach((p) => minutesWorked += p.totalMinutes);
+    const workedDuration = new Duration(minutesWorked);
 
-    let workedDuration = new Duration(minutesWorked);
     return {
       worked: workedDuration,
       normalWorkingTime: minutesWorked <= DAILY_WORKING_MINUTES ?

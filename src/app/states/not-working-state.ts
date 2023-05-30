@@ -12,7 +12,7 @@ export default class NotWorkingState implements CanStartWorkingState {
 
   // TODO: test it
   startWorking(workingTimeService: WorkingTimeService, startTime: Time): State {
-    workingTimeService.startTime = replaceTime(new Date(), startTime);
+    workingTimeService.startNewWorkingPeriod(replaceTime(new Date(), startTime));
     return new WorkingState();
   }
 }
