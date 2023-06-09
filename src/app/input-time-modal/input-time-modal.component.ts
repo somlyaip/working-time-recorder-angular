@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Time} from "@angular/common";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-input-time-modal',
@@ -8,8 +9,8 @@ import {Time} from "@angular/common";
 export class InputTimeModalComponent {
 
   isOpen = false;
-  hours = '';
-  minutes = '';
+  hours = new FormControl('');
+  minutes = new FormControl('');
 
   callback?: (time: Time) => void;
 
@@ -18,8 +19,8 @@ export class InputTimeModalComponent {
     this.callback = callback;
 
     const now = new Date();
-    this.hours = now.getHours().toString().padStart(2, '0');
-    this.minutes = now.getMinutes().toString().padStart(2, '0');
+    this.hours.setValue(now.getHours().toString().padStart(2, '0'));
+    this.minutes.setValue(now.getMinutes().toString().padStart(2, '0'));
   }
 
   close() {
@@ -29,15 +30,16 @@ export class InputTimeModalComponent {
   ok() {
     this.close();
 
-    if (this.hours && this.minutes) {
+    // TODO: validate it
+    if (this.hours.value && this.minutes.value) {
       if (typeof this.callback != 'function') {
         console.log(`callback is not a function. It is: '${typeof this.callback}'`);
         return;
       }
 
       this.callback({
-        hours: Number(this.hours),
-        minutes: Number(this.minutes)
+        hours: Number(this.hours.value),
+        minutes: Number(this.minutes.value)
       });
     }
   }

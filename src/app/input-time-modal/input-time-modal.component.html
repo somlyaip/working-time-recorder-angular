@@ -13,13 +13,13 @@
       <form method="dialog" class="flex flex-col items-center gap-y-2">
         <div class="flex justify-center space-x-1">
           <label for="hours" class="sr-only">Hours</label>
-          <input type="text" [(ngModel)]="hours" name="hours" id="hours"
+          <input type="text" [formControl]="hours" name="hours" id="hours"
             class="w-12" />
 
           <span class="leading-10">:</span>
 
           <label for="minutes" class="sr-only">Minutes</label>
-          <input type="text" [(ngModel)]="minutes" name="minutes" id="minutes"
+          <input type="text" [formControl]="minutes" name="minutes" id="minutes"
             class="w-12" />
         </div>
         <div class="flex justify-center">

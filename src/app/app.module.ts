@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import {NgxEchartsModule} from "ngx-echarts";
 import { WorkingTimeChartComponent } from './working-time-chart/working-time-chart.component';
 import { InputTimeModalComponent } from './input-time-modal/input-time-modal.component';
-import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import {FormsModule} from "@angular/forms";
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
     WorkingTimeChartComponent,
-    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
