@@ -13,17 +13,23 @@
       <form [formGroup]="timeForm" method="dialog" class="flex flex-col items-center gap-y-2">
         <div class="flex justify-center space-x-1">
           <label for="hours" class="sr-only">Hours</label>
-          <input type="text" formControlName="hours" name="hours" id="hours"
-            class="w-12" />
+          <input type="text" formControlName="hours" id="hours" class="w-12" required>
 
           <span class="leading-10">:</span>
 
           <label for="minutes" class="sr-only">Minutes</label>
-          <input type="text" formControlName="minutes" name="minutes" id="minutes"
-            class="w-12" />
+          <input type="text" formControlName="minutes" id="minutes" class="w-12" required>
+
         </div>
+
+        <div class="text-red-600">
+          <div *ngIf="isFieldValid('hours')">Invalid 'hours'</div>
+          <div *ngIf="isFieldValid('minutes')">Invalid 'minutes'</div>
+        </div>
+
         <div class="flex justify-center">
-          <button (click)="ok()" class="w-16 bg-amber-300 p-2 rounded hover:bg-amber-400">OK</button>
+          <button [disabled]="!timeForm.valid" (click)="ok()"
+                  class="w-16 bg-amber-300 p-2 rounded hover:bg-amber-400">OK</button>
         </div>
       </form>
     </div>

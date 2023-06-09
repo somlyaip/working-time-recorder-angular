@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Time} from "@angular/common";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-input-time-modal',
@@ -8,13 +8,17 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class InputTimeModalComponent {
 
-  isOpen = false;
-  timeForm = new FormGroup({
-    hours: new FormControl(''),
-    minutes: new FormControl('')
-  });
+  public isOpen = false;
+  public timeForm: FormGroup;
 
   callback?: (time: Time) => void;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.timeForm = this.formBuilder.group({
+      hours: ['', Validators.required],
+      minutes: ['', Validators.required]
+    });
+  }
 
   show(callback: (time: Time) => void) {
     this.isOpen = true;
@@ -45,5 +49,10 @@ export class InputTimeModalComponent {
         minutes: Number(this.timeForm.value.minutes)
       });
     }
+  }
+
+  isFieldValid(formFieldName: string) {
+    const formFieldControl = this.timeForm.controls[formFieldName];
+    return formFieldControl.invalid && (formFieldControl.dirty || formFieldControl.touched)
   }
 }
