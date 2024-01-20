@@ -15,8 +15,8 @@ describe('WorkingTimeCalculatorService', () => {
   });
 
   it('calculate record with remaining', () => {
-    service.startTime = new Date('2023-05-01T08:00:00Z')
-    service.endTime = new Date('2023-05-01T15:51:00Z')
+    service.startNewWorkingPeriod(new Date('2023-05-01T08:00:00Z'));
+    service.finishLastWorkingPeriod(new Date('2023-05-01T15:51:00Z'));
     const workingTimeRecord = service.calculateWorkingTimeRecord();
     expect(workingTimeRecord?.worked.hours).toEqual(7);
     expect(workingTimeRecord?.worked.minutes).toEqual(51);
@@ -25,11 +25,11 @@ describe('WorkingTimeCalculatorService', () => {
   });
 
   it('calculate record with overtime', () => {
-    service.startTime = new Date('2023-05-01T09:02:00Z')
-    service.endTime = new Date('2023-05-01T18:05:00Z')
+    service.startNewWorkingPeriod(new Date('2023-05-01T09:02:00Z'));
+    service.finishLastWorkingPeriod(new Date('2023-05-01T18:05:00Z'));
     const workingTimeRecord = service.calculateWorkingTimeRecord();
     expect(workingTimeRecord?.worked.hours).toEqual(9);
-    expect(workingTimeRecord?.worked.minutes).toEqual(2);
+    expect(workingTimeRecord?.worked.minutes).toEqual(3);
     expect(workingTimeRecord?.remained.totalMinutes).toEqual(0);
     expect(workingTimeRecord?.overtime.hours).toEqual(1);
     expect(workingTimeRecord?.overtime.minutes).toEqual(3);

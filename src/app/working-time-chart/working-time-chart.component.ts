@@ -1,10 +1,10 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {NgxEchartsModule, NGX_ECHARTS_CONFIG} from 'ngx-echarts';
-import {EChartsOption} from 'echarts';
-import WorkingTimeRecord from "../working-time-calculation/working-time-record";
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { NgxEchartsModule, NGX_ECHARTS_CONFIG } from 'ngx-echarts';
+import { EChartsOption } from 'echarts';
+import WorkingTimeRecord from '../working-time-calculation/working-time-record';
 
-import Duration from "../working-time-calculation/duration";
-import {DAILY_WORKING_MINUTES} from "../working-time-calculation/working-time.service";
+import Duration from '../working-time-calculation/duration';
+import { DAILY_WORKING_MINUTES } from '../working-time-calculation/working-time.service';
 
 @Component({
   standalone: true,
@@ -14,9 +14,9 @@ import {DAILY_WORKING_MINUTES} from "../working-time-calculation/working-time.se
   providers: [
     {
       provide: NGX_ECHARTS_CONFIG,
-      useFactory: () => ({echarts: () => import('echarts')})
+      useFactory: () => ({ echarts: () => import('echarts') }),
     },
-  ]
+  ],
 })
 export class WorkingTimeChartComponent implements OnChanges {
   @Input() workingTimeRecord: WorkingTimeRecord | undefined;
@@ -40,7 +40,7 @@ export class WorkingTimeChartComponent implements OnChanges {
           const duration = new Duration(params.data.value);
           // @ts-ignore
           return `<span class="font-bold">${params.data.name}</span>: ${duration.hours} h ${duration.minutes} m`;
-        }
+        },
       },
       series: [
         {
@@ -55,30 +55,39 @@ export class WorkingTimeChartComponent implements OnChanges {
           data: [
             {
               value: this.workingTimeRecord?.normalWorkingTime?.totalMinutes,
-              name: this.workingTimeRecord?.overtime?.totalMinutes > 0 ? 'Normal worktime' : 'Worked'
+              name:
+                this.workingTimeRecord?.overtime?.totalMinutes > 0
+                  ? 'Normal worktime'
+                  : 'Worked',
             },
-            { value: this.workingTimeRecord?.remained?.totalMinutes, name: 'Remained' },
-            { value: this.workingTimeRecord?.overtime?.totalMinutes, name: 'Overtime' },
+            {
+              value: this.workingTimeRecord?.remained?.totalMinutes,
+              name: 'Remained',
+            },
+            {
+              value: this.workingTimeRecord?.overtime?.totalMinutes,
+              name: 'Overtime',
+            },
             {
               // make an invisible record to fill the bottom n%
-              value: DAILY_WORKING_MINUTES - this.workingTimeRecord?.overtime?.totalMinutes,
+              value:
+                DAILY_WORKING_MINUTES -
+                this.workingTimeRecord?.overtime?.totalMinutes,
               itemStyle: {
                 // stop the working-time-chart from rendering this piece
                 color: 'none',
                 decal: {
-                  symbol: 'none'
-                }
+                  symbol: 'none',
+                },
               },
               label: {
-                show: false
-              }
-            }
-          ]
+                show: false,
+              },
+            },
+          ],
         },
       ],
-      color: [
-        '#fcd34d', '#eee', 'red'
-      ]
+      color: ['#fcd34d', '#eee', 'red'],
     };
   }
 }

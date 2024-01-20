@@ -1,5 +1,4 @@
 export default class Duration {
-
   readonly #totalMinutes: number;
 
   constructor(totalMinutes: number) {

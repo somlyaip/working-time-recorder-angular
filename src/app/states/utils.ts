@@ -1,4 +1,4 @@
-import {Time} from "@angular/common";
+import { Time } from '@angular/common';
 
 export function replaceTime(date: Date, time: Time): Date {
   date.setHours(time.hours);

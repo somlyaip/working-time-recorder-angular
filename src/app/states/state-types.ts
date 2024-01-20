@@ -1,5 +1,5 @@
-import {WorkingTimeService} from "../working-time-calculation/working-time.service";
-import {Time} from "@angular/common";
+import { WorkingTimeService } from '../working-time-calculation/working-time.service';
+import { Time } from '@angular/common';
 
 export interface State {
   get name(): string;

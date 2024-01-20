@@ -1,15 +1,21 @@
 import { TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HeaderComponent } from './header/header.component';
+import { InputTimeModalComponent } from './input-time-modal/input-time-modal.component';
+import { StatusBarComponent } from './status-bar/status-bar.component';
+import { WorkingTimeChartComponent } from './working-time-chart/working-time-chart.component';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+      imports: [RouterTestingModule, ReactiveFormsModule, WorkingTimeChartComponent],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        InputTimeModalComponent,
+        StatusBarComponent,
       ],
     }).compileComponents();
   });
@@ -25,11 +31,5 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('working-time-recorder-angular');
   });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('working-time-recorder-angular app is running!');
   });
 });

@@ -1,25 +1,42 @@
 <dialog [open]="isOpen">
   <!-- Overlay -->
-  <div class="fixed top-0 left-0 z-10 w-full h-full bg-black opacity-60">
-
-  </div>
+  <div class="fixed top-0 left-0 z-10 w-full h-full bg-black opacity-60"></div>
 
   <!-- Content container -->
   <div class="fixed top-0 left-0 z-20 w-full h-full">
     <!-- Content -->
-    <div class="mx-auto mt-20 border-gray-300 border w-64 rounded bg-gray-50 p-4">
-      <p class="text-center text-lg font-semibold text-gray-800 mb-2">Select time</p>
+    <div
+      class="mx-auto mt-20 border-gray-300 border w-64 rounded bg-gray-50 p-4"
+    >
+      <p class="text-center text-lg font-semibold text-gray-800 mb-2">
+        Select time
+      </p>
 
-      <form [formGroup]="timeForm" method="dialog" class="flex flex-col items-center gap-y-2">
+      <form
+        [formGroup]="timeForm"
+        method="dialog"
+        class="flex flex-col items-center gap-y-2"
+      >
         <div class="flex justify-center space-x-1">
           <label for="hours" class="sr-only">Hours</label>
-          <input type="text" formControlName="hours" id="hours" class="w-12" required>
+          <input
+            type="text"
+            formControlName="hours"
+            id="hours"
+            class="w-12"
+            required
+          />
 
           <span class="leading-10">:</span>
 
           <label for="minutes" class="sr-only">Minutes</label>
-          <input type="text" formControlName="minutes" id="minutes" class="w-12" required>
-
+          <input
+            type="text"
+            formControlName="minutes"
+            id="minutes"
+            class="w-12"
+            required
+          />
         </div>
 
         <div class="text-red-600">
@@ -32,8 +49,13 @@
         </div>
 
         <div class="flex justify-center">
-          <button [disabled]="!timeForm.valid" (click)="ok()"
-          class="w-16 bg-amber-300 p-2 rounded hover:bg-amber-400">OK</button>
+          <button
+            [disabled]="!timeForm.valid"
+            (click)="ok()"
+            class="w-16 bg-amber-300 p-2 rounded hover:bg-amber-400"
+          >
+            OK
+          </button>
         </div>
       </form>
     </div>

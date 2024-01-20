@@ -1,8 +1,7 @@
-import {Time} from "@angular/common";
-import Duration from "./duration";
+import { Time } from '@angular/common';
+import Duration from './duration';
 
 export default class Period {
-
   readonly #startDate: Date;
   #endDate: Date | undefined;
 
@@ -20,7 +19,8 @@ export default class Period {
       return 0;
     }
 
-    const millisecondsElapsed = this.#endDate.getTime() - this.#startDate.getTime();
+    const millisecondsElapsed =
+      this.#endDate.getTime() - this.#startDate.getTime();
     return Math.round(millisecondsElapsed / 1000 / 60);
   }
 
@@ -28,7 +28,7 @@ export default class Period {
     const hours = Math.floor(this.totalMinutes / 60);
     return {
       hours: hours,
-      minutes: this.totalMinutes - hours * 60
+      minutes: this.totalMinutes - hours * 60,
     };
   }
 

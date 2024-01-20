@@ -1,4 +1,4 @@
-import Duration from "./duration";
+import Duration from './duration';
 
 export default interface WorkingTimeRecord {
   worked: Duration;

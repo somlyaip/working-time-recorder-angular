@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { HeaderComponent } from './header/header.component';
-import {NgxEchartsModule} from "ngx-echarts";
+import { NgxEchartsModule } from 'ngx-echarts';
 import { WorkingTimeChartComponent } from './working-time-chart/working-time-chart.component';
 import { InputTimeModalComponent } from './input-time-modal/input-time-modal.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,6 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

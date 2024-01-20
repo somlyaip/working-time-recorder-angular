@@ -1,19 +1,22 @@
-import {CanTakeBreakState, CanStopWorkingState, State} from "./state-types";
-import NotWorkingState from "./not-working-state";
-import {WorkingTimeService} from "../working-time-calculation/working-time.service";
-import {Time} from "@angular/common";
-import {replaceTime} from "./utils";
-import TakingBreakState from "./taking-break-state";
+import { CanTakeBreakState, CanStopWorkingState, State } from './state-types';
+import NotWorkingState from './not-working-state';
+import { WorkingTimeService } from '../working-time-calculation/working-time.service';
+import { Time } from '@angular/common';
+import { replaceTime } from './utils';
+import TakingBreakState from './taking-break-state';
 
-export default class WorkingState implements CanStopWorkingState, CanTakeBreakState {
-
+export default class WorkingState
+  implements CanStopWorkingState, CanTakeBreakState
+{
   get name(): string {
-    return "Working";
+    return 'Working';
   }
 
   // TODO: test it
   stopWorking(workingTimeService: WorkingTimeService, endTime: Time): State {
-    workingTimeService.finishLastWorkingPeriod(replaceTime(new Date(), endTime));
+    workingTimeService.finishLastWorkingPeriod(
+      replaceTime(new Date(), endTime),
+    );
     return new NotWorkingState();
   }
 

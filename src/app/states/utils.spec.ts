@@ -1,4 +1,4 @@
-import {replaceTime} from "./utils";
+import { replaceTime } from './utils';
 
 describe('replaceTime', () => {
   it('should replaces hours and minutes', () => {

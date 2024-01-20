@@ -1,13 +1,12 @@
-import {Component} from '@angular/core';
-import {Time} from "@angular/common";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Component } from '@angular/core';
+import { Time } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-input-time-modal',
-  templateUrl: './input-time-modal.component.html'
+  templateUrl: './input-time-modal.component.html',
 })
 export class InputTimeModalComponent {
-
   public isOpen = false;
   public timeForm: FormGroup;
 
@@ -16,7 +15,7 @@ export class InputTimeModalComponent {
   constructor(private formBuilder: FormBuilder) {
     this.timeForm = this.formBuilder.group({
       hours: ['', Validators.required],
-      minutes: ['', Validators.required]
+      minutes: ['', Validators.required],
     });
   }
 
@@ -27,7 +26,7 @@ export class InputTimeModalComponent {
     const now = new Date();
     this.timeForm.setValue({
       hours: now.getHours().toString().padStart(2, '0'),
-      minutes: now.getMinutes().toString().padStart(2, '0')
+      minutes: now.getMinutes().toString().padStart(2, '0'),
     });
   }
 
@@ -40,19 +39,24 @@ export class InputTimeModalComponent {
 
     if (this.timeForm.valid) {
       if (typeof this.callback != 'function') {
-        console.log(`callback is not a function. It is: '${typeof this.callback}'`);
+        console.log(
+          `callback is not a function. It is: '${typeof this.callback}'`,
+        );
         return;
       }
 
       this.callback({
         hours: Number(this.timeForm.value.hours),
-        minutes: Number(this.timeForm.value.minutes)
+        minutes: Number(this.timeForm.value.minutes),
       });
     }
   }
 
   isFieldValid(formFieldName: string) {
     const formFieldControl = this.timeForm.controls[formFieldName];
-    return formFieldControl.invalid && (formFieldControl.dirty || formFieldControl.touched)
+    return (
+      formFieldControl.invalid &&
+      (formFieldControl.dirty || formFieldControl.touched)
+    );
   }
 }
