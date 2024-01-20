@@ -6,11 +6,17 @@ import { InputTimeModalComponent } from './input-time-modal/input-time-modal.com
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { WorkingTimeChartComponent } from './working-time-chart/working-time-chart.component';
 import { AppComponent } from './app.component';
+import { WorkingPeriodsAndBreaksComponent } from 'src/app/working-periods-and-breaks/working-periods-and-breaks.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, ReactiveFormsModule, WorkingTimeChartComponent],
+      imports: [
+        RouterTestingModule,
+        ReactiveFormsModule,
+        WorkingTimeChartComponent,
+        WorkingPeriodsAndBreaksComponent,
+      ],
       declarations: [
         AppComponent,
         HeaderComponent,
@@ -30,6 +36,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('working-time-recorder-angular');
-  });
   });
 });
