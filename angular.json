@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "working-time-recorder-angular:build:production"
+              "buildTarget": "working-time-recorder-angular:build:production"
             },
             "development": {
-              "browserTarget": "working-time-recorder-angular:build:development"
+              "buildTarget": "working-time-recorder-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "working-time-recorder-angular:build"
+            "buildTarget": "working-time-recorder-angular:build"
           }
         },
         "test": {
