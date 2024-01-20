@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {NgxEchartsModule, NGX_ECHARTS_CONFIG} from 'ngx-echarts';
 import {EChartsOption} from 'echarts';
 import WorkingTimeRecord from "../working-time-calculation/working-time-record";
-import {NgIf} from "@angular/common";
+
 import Duration from "../working-time-calculation/duration";
 import {DAILY_WORKING_MINUTES} from "../working-time-calculation/working-time.service";
 
@@ -10,7 +10,7 @@ import {DAILY_WORKING_MINUTES} from "../working-time-calculation/working-time.se
   standalone: true,
   selector: 'app-working-time-chart',
   templateUrl: './working-time-chart.component.html',
-  imports: [NgxEchartsModule, NgIf],
+  imports: [NgxEchartsModule],
   providers: [
     {
       provide: NGX_ECHARTS_CONFIG,

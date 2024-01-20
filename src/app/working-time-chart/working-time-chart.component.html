@@ -1,3 +1,5 @@
 <div class="w-[400px] h-[400px] mx-auto">
-  <div *ngIf="workingTimeRecord !== undefined" echarts [options]="chartOptions"></div>
+  @if (workingTimeRecord !== undefined) {
+    <div echarts [options]="chartOptions"></div>
+  }
 </div>

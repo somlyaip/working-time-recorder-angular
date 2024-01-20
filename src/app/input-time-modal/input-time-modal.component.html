@@ -23,13 +23,17 @@
         </div>
 
         <div class="text-red-600">
-          <div *ngIf="isFieldValid('hours')">Invalid 'hours'</div>
-          <div *ngIf="isFieldValid('minutes')">Invalid 'minutes'</div>
+          @if (isFieldValid('hours')) {
+            <div>Invalid 'hours'</div>
+          }
+          @if (isFieldValid('minutes')) {
+            <div>Invalid 'minutes'</div>
+          }
         </div>
 
         <div class="flex justify-center">
           <button [disabled]="!timeForm.valid" (click)="ok()"
-                  class="w-16 bg-amber-300 p-2 rounded hover:bg-amber-400">OK</button>
+          class="w-16 bg-amber-300 p-2 rounded hover:bg-amber-400">OK</button>
         </div>
       </form>
     </div>
