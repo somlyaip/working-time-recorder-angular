@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { WorkingTimeChartComponent } from './working-time-chart/working-time-chart.component';
 import { InputTimeModalComponent } from './input-time-modal/input-time-modal.component';
+import { WorkingPeriodsAndBreaksComponent } from './working-periods-and-breaks/working-periods-and-breaks.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
     WorkingTimeChartComponent,
+    WorkingPeriodsAndBreaksComponent,
     ReactiveFormsModule,
   ],
   providers: [],

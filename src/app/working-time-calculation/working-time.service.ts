@@ -11,7 +11,15 @@ export const DAILY_WORKING_MINUTES = DAILY_WORKING_HOURS * 60;
 })
 export class WorkingTimeService {
   #workingPeriods = new Array<Period>();
-  #takingBreaksPeriods = new Array<Period>();
+  #takingBreakPeriods = new Array<Period>();
+
+  get workingPeriods() {
+    return this.#workingPeriods;
+  }
+
+  get takingBreakPeriods() {
+    return this.#takingBreakPeriods;
+  }
 
   startNewWorkingPeriod(startDate: Date) {
     this.#workingPeriods.push(new Period(startDate));
@@ -22,11 +30,11 @@ export class WorkingTimeService {
   }
 
   startNewBreakPeriod(startDate: Date) {
-    this.#takingBreaksPeriods.push(new Period(startDate));
+    this.#takingBreakPeriods.push(new Period(startDate));
   }
 
   finishLastBreakPeriod(endDate: Date) {
-    this.#takingBreaksPeriods[this.#takingBreaksPeriods.length - 1].endDate =
+    this.#takingBreakPeriods[this.#takingBreakPeriods.length - 1].endDate =
       endDate;
   }
 
@@ -34,8 +42,8 @@ export class WorkingTimeService {
   calculateWorkingTimeRecord(): WorkingTimeRecord | undefined {
     console.log('workingPeriods:');
     console.log(this.#workingPeriods);
-    console.log('takingBreaksPeriods:');
-    console.log(this.#takingBreaksPeriods);
+    console.log('takingBreakPeriods:');
+    console.log(this.#takingBreakPeriods);
 
     if (this.#workingPeriods.length == 0) {
       console.log(
@@ -47,7 +55,7 @@ export class WorkingTimeService {
     let overallMinutes = 0;
     this.#workingPeriods.forEach((p) => (overallMinutes += p.totalMinutes));
     let minutesNotWorked = 0;
-    this.#takingBreaksPeriods.forEach(
+    this.#takingBreakPeriods.forEach(
       (p) => (minutesNotWorked += p.totalMinutes),
     );
     let minutesWorked = overallMinutes - minutesNotWorked;

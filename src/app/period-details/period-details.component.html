@@ -1,0 +1,9 @@
+@if (period) {
+  <span>
+    {{ period.startDate | date: 'HH:mm' }} -
+    {{ period.endDate | date: 'HH:mm' }}
+    @if (period.totalMinutes > 0) {
+      ({{ period.toTime().hours }} h {{ period.toTime().minutes }} m)
+    }
+  </span>
+}

@@ -5,6 +5,14 @@ export default class Period {
   readonly #startDate: Date;
   #endDate: Date | undefined;
 
+  public get startDate(): Date {
+    return this.#startDate;
+  }
+
+  public get endDate(): Date | undefined {
+    return this.#endDate;
+  }
+
   constructor(startTime: Date, endTime: Date | undefined = undefined) {
     this.#startDate = startTime;
     this.#endDate = endTime;

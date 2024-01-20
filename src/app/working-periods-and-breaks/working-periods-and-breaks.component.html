@@ -1,0 +1,30 @@
+<div class="flex justify-center mt-12">
+  @if (workingTimeService.workingPeriods.length > 0) {
+    <div>
+      <span>Working time</span>
+      <ul class="list-disc">
+        @for (period of workingTimeService.workingPeriods; track period) {
+          <li>
+            <app-period-details [period]="period" />
+          </li>
+        }
+      </ul>
+    </div>
+  }
+
+  @if (workingTimeService.takingBreakPeriods.length > 0) {
+    <div class="ml-8">
+      <span>Breaks</span>
+      <ul class="list-disc">
+        @for (
+          breakPeriod of workingTimeService.takingBreakPeriods;
+          track breakPeriod
+        ) {
+          <li>
+            <app-period-details [period]="breakPeriod" />
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</div>
