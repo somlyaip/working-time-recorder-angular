@@ -22,9 +22,7 @@ export default class WorkingState
 
   // TODO: test it
   takeABreak(workingTimeService: WorkingTimeService, startTime: Time): State {
-    workingTimeService.startNewBreakPeriod(
-      replaceTime(new Date(), startTime)
-    );
+    workingTimeService.startNewBreakPeriod(replaceTime(new Date(), startTime));
     return new TakingBreakState(startTime);
   }
 }

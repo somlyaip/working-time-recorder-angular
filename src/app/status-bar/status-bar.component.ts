@@ -46,19 +46,19 @@ export class StatusBarComponent {
 
   takeABreak() {
     this.inputTimeModal.show((startTime: Time) => {
-        console.log(startTime);
-        this.stateMachine.takeABreak(startTime);
-        this.calculateWorkingTimeRecord();
-        this.isWorkingNow = false;
+      console.log(startTime);
+      this.stateMachine.takeABreak(startTime);
+      this.calculateWorkingTimeRecord();
+      this.isWorkingNow = false;
     });
   }
 
   finishBreak() {
     this.inputTimeModal.show((endTime: Time) => {
-        console.log(endTime);
-        this.stateMachine.finishBreak(endTime);
-        this.calculateWorkingTimeRecord();
-        this.isWorkingNow = true;
+      console.log(endTime);
+      this.stateMachine.finishBreak(endTime);
+      this.calculateWorkingTimeRecord();
+      this.isWorkingNow = true;
     });
   }
 

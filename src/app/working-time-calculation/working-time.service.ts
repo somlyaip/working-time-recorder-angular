@@ -26,7 +26,8 @@ export class WorkingTimeService {
   }
 
   finishLastBreakPeriod(endDate: Date) {
-    this.#takingBreaksPeriods[this.#takingBreaksPeriods.length - 1].endDate = endDate;
+    this.#takingBreaksPeriods[this.#takingBreaksPeriods.length - 1].endDate =
+      endDate;
   }
 
   // TODO: use optional or any other solution instead of ... | undefined
@@ -46,7 +47,9 @@ export class WorkingTimeService {
     let overallMinutes = 0;
     this.#workingPeriods.forEach((p) => (overallMinutes += p.totalMinutes));
     let minutesNotWorked = 0;
-    this.#takingBreaksPeriods.forEach((p) => (minutesNotWorked += p.totalMinutes));
+    this.#takingBreaksPeriods.forEach(
+      (p) => (minutesNotWorked += p.totalMinutes),
+    );
     let minutesWorked = overallMinutes - minutesNotWorked;
     if (minutesWorked < 0) {
       minutesWorked = 0;

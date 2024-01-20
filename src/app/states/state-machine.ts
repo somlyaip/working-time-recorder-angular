@@ -62,26 +62,30 @@ export class StateMachine {
   }
 
   takeABreak(breakStartTime: Time) {
-      if (!this.canTakeABreak()) {
-        throw new Error(`Cannot take a break in the current state: ${this.actualState}`);
-      }
-
-      const canTakeABreakState = this.actualState as CanTakeABreakState;
-      this.actualState = canTakeABreakState.takeABreak(
-        this.workingTimeService,
-        breakStartTime,
+    if (!this.canTakeABreak()) {
+      throw new Error(
+        `Cannot take a break in the current state: ${this.actualState}`,
       );
     }
 
-    finishBreak(breakEndTime: Time) {
-      if (!this.canFinishBreak()) {
-        throw new Error(`Cannot finish break in the current state: ${this.actualState}`);
-      }
+    const canTakeABreakState = this.actualState as CanTakeABreakState;
+    this.actualState = canTakeABreakState.takeABreak(
+      this.workingTimeService,
+      breakStartTime,
+    );
+  }
 
-      const canFinishBreakState = this.actualState as CanFinishBreakState;
-      this.actualState = canFinishBreakState.finishBreak(
-        this.workingTimeService,
-        breakEndTime,
+  finishBreak(breakEndTime: Time) {
+    if (!this.canFinishBreak()) {
+      throw new Error(
+        `Cannot finish break in the current state: ${this.actualState}`,
       );
     }
+
+    const canFinishBreakState = this.actualState as CanFinishBreakState;
+    this.actualState = canFinishBreakState.finishBreak(
+      this.workingTimeService,
+      breakEndTime,
+    );
+  }
 }

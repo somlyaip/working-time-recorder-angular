@@ -15,19 +15,15 @@ export default class TakingBreakState
   }
 
   finishBreak(workingTimeService: WorkingTimeService, endTime: Time): State {
-    workingTimeService.finishLastBreakPeriod(
-      replaceTime(new Date(), endTime),
-    );
+    workingTimeService.finishLastBreakPeriod(replaceTime(new Date(), endTime));
     return new WorkingState();
   }
 
   stopWorking(workingTimeService: WorkingTimeService, endTime: Time): State {
     workingTimeService.finishLastWorkingPeriod(
       replaceTime(new Date(), this.startTime),
-      );
-    workingTimeService.finishLastBreakPeriod(
-      replaceTime(new Date(), endTime),
     );
+    workingTimeService.finishLastBreakPeriod(replaceTime(new Date(), endTime));
     return new NotWorkingState();
   }
 }
