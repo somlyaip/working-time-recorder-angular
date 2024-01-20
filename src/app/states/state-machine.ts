@@ -1,6 +1,8 @@
 import {
   CanStartWorkingState,
   CanStopWorkingState,
+  CanTakeABreakState,
+  CanFinishBreakState,
   State,
 } from './state-types';
 import { Injectable } from '@angular/core';
@@ -27,6 +29,14 @@ export class StateMachine {
     return 'stopWorking' in this.actualState;
   }
 
+  canTakeABreak() {
+    return 'takeABreak' in this.actualState;
+  }
+
+  canFinishBreak() {
+    return 'finishBreak' in this.actualState;
+  }
+
   startWorking(startTime: Time) {
     if (!this.canStartWorking()) {
       throw new Error(`Actual state cannot be started: ${this.actualState}`);
@@ -50,4 +60,28 @@ export class StateMachine {
       endTime,
     );
   }
+
+  takeABreak(breakStartTime: Time) {
+      if (!this.canTakeABreak()) {
+        throw new Error(`Cannot take a break in the current state: ${this.actualState}`);
+      }
+
+      const canTakeABreakState = this.actualState as CanTakeABreakState;
+      this.actualState = canTakeABreakState.takeABreak(
+        this.workingTimeService,
+        breakStartTime,
+      );
+    }
+
+    finishBreak(breakEndTime: Time) {
+      if (!this.canFinishBreak()) {
+        throw new Error(`Cannot finish break in the current state: ${this.actualState}`);
+      }
+
+      const canFinishBreakState = this.actualState as CanFinishBreakState;
+      this.actualState = canFinishBreakState.finishBreak(
+        this.workingTimeService,
+        breakEndTime,
+      );
+    }
 }

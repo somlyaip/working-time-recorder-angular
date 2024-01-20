@@ -21,8 +21,21 @@ export class WorkingTimeService {
     this.#workingPeriods[this.#workingPeriods.length - 1].endDate = endDate;
   }
 
+  startNewBreakPeriod(startDate: Date) {
+    this.#takingBreaksPeriods.push(new Period(startDate));
+  }
+
+  finishLastBreakPeriod(endDate: Date) {
+    this.#takingBreaksPeriods[this.#takingBreaksPeriods.length - 1].endDate = endDate;
+  }
+
   // TODO: use optional or any other solution instead of ... | undefined
   calculateWorkingTimeRecord(): WorkingTimeRecord | undefined {
+    console.log('workingPeriods:');
+    console.log(this.#workingPeriods);
+    console.log('takingBreaksPeriods:');
+    console.log(this.#takingBreaksPeriods);
+
     if (this.#workingPeriods.length == 0) {
       console.log(
         'You have to set at least one working period before start recalculation',
@@ -30,8 +43,14 @@ export class WorkingTimeService {
       return undefined;
     }
 
-    let minutesWorked = 0;
-    this.#workingPeriods.forEach((p) => (minutesWorked += p.totalMinutes));
+    let overallMinutes = 0;
+    this.#workingPeriods.forEach((p) => (overallMinutes += p.totalMinutes));
+    let minutesNotWorked = 0;
+    this.#takingBreaksPeriods.forEach((p) => (minutesNotWorked += p.totalMinutes));
+    let minutesWorked = overallMinutes - minutesNotWorked;
+    if (minutesWorked < 0) {
+      minutesWorked = 0;
+    }
     const workedDuration = new Duration(minutesWorked);
 
     return {

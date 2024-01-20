@@ -19,7 +19,22 @@
         Stop working
       </button>
     }
-    <!-- TODO: add 'Take a break' and 'Finish break' buttons   -->
+    @if (stateMachine.canTakeABreak()) {
+      <button
+        (click)="takeABreak()"
+        class="bg-amber-300 p-2 rounded hover:bg-amber-400"
+      >
+        Take a break
+      </button>
+    }
+    @if (stateMachine.canFinishBreak()) {
+      <button
+        (click)="finishBreak()"
+        class="bg-amber-300 p-2 rounded hover:bg-amber-400"
+      >
+        Finish break
+      </button>
+    }
   </div>
   @if (workingTimeRecord !== undefined) {
     <p class="text-center pt-4">

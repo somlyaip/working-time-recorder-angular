@@ -1,4 +1,4 @@
-import { CanTakeBreakState, CanStopWorkingState, State } from './state-types';
+import { CanTakeABreakState, CanStopWorkingState, State } from './state-types';
 import NotWorkingState from './not-working-state';
 import { WorkingTimeService } from '../working-time-calculation/working-time.service';
 import { Time } from '@angular/common';
@@ -6,7 +6,7 @@ import { replaceTime } from './utils';
 import TakingBreakState from './taking-break-state';
 
 export default class WorkingState
-  implements CanStopWorkingState, CanTakeBreakState
+  implements CanStopWorkingState, CanTakeABreakState
 {
   get name(): string {
     return 'Working';
@@ -20,8 +20,11 @@ export default class WorkingState
     return new NotWorkingState();
   }
 
-  takeBreak(workingTimeService: WorkingTimeService, startTime: Time): State {
-    // TODO: store start of break
-    return new TakingBreakState();
+  // TODO: test it
+  takeABreak(workingTimeService: WorkingTimeService, startTime: Time): State {
+    workingTimeService.startNewBreakPeriod(
+      replaceTime(new Date(), startTime)
+    );
+    return new TakingBreakState(startTime);
   }
 }

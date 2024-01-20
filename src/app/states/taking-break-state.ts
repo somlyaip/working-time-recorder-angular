@@ -3,21 +3,31 @@ import { WorkingTimeService } from '../working-time-calculation/working-time.ser
 import { Time } from '@angular/common';
 import WorkingState from './working-state';
 import NotWorkingState from './not-working-state';
+import { replaceTime } from './utils';
 
 export default class TakingBreakState
   implements CanFinishBreakState, CanStopWorkingState
 {
+  constructor(private startTime: Time) {}
+
   get name(): string {
     return 'Taking a break';
   }
 
   finishBreak(workingTimeService: WorkingTimeService, endTime: Time): State {
-    // TODO: store end of break and start of work
+    workingTimeService.finishLastBreakPeriod(
+      replaceTime(new Date(), endTime),
+    );
     return new WorkingState();
   }
 
   stopWorking(workingTimeService: WorkingTimeService, endTime: Time): State {
-    // TODO: store end of work using break start time
+    workingTimeService.finishLastWorkingPeriod(
+      replaceTime(new Date(), this.startTime),
+      );
+    workingTimeService.finishLastBreakPeriod(
+      replaceTime(new Date(), endTime),
+    );
     return new NotWorkingState();
   }
 }
