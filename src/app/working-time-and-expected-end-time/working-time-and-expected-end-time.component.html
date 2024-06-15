@@ -1,0 +1,17 @@
+<p class="text-center pt-4">
+  You
+  @if (isWorkingNow) {
+    have been working for
+  } @else {
+    have worked
+  }
+  @if (workedSoFar!.hours && workedSoFar!.hours > 0) {
+    {{ workedSoFar!.hours }} hours and
+  }
+  {{ workedSoFar!.minutes }} minutes.
+  <br>
+  @if (isWorkingNow && expectedEndTimeOfWork) {
+    It looks like you'll finish work at about
+    {{ expectedEndTimeOfWork!.hours }}:{{ expectedEndTimeOfWork!.minutes }}.
+  }
+</p>

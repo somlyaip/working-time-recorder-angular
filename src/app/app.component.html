@@ -1,7 +1,17 @@
 <app-header />
 <app-working-time-chart [workingTimeRecord]="workingTimeRecord" />
-<app-status-bar
-  [workingTimeRecord]="workingTimeRecord"
-  (workingTimeRecordUpdated)="updateWorkingTimeRecord($event)"
-/>
+<div class="flex flex-col items-center">
+  <app-status-bar />
+  <app-controls-bar
+    (workStartedOrBreakFinished)="workStartedOrBreakFinished()"
+    (workFinishedOrBreakTaken)="workFinishedOrBreakTaken()"
+    />
+  @if (workedSoFar !== undefined) {
+    <app-working-time-and-expected-end-time
+      [isWorkingNow]="isWorkingNow"
+      [workedSoFar]="workedSoFar"
+      [expectedEndTimeOfWork]="expectedEndTimeOfWork"
+      />
+  }
+</div>
 <app-working-periods-and-breaks />

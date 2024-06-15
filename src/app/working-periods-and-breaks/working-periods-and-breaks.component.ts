@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { PeriodDetailsComponent } from '../period-details/period-details.component';
-import { WorkingTimeService } from '../working-time-calculation/working-time.service';
+import { WorkingTimeService } from '../common/working-time-calculation/working-time.service';
 
 @Component({
   selector: 'app-working-periods-and-breaks',

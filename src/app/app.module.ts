@@ -7,9 +7,11 @@ import { StatusBarComponent } from './status-bar/status-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { WorkingTimeChartComponent } from './working-time-chart/working-time-chart.component';
-import { InputTimeModalComponent } from './input-time-modal/input-time-modal.component';
 import { WorkingPeriodsAndBreaksComponent } from './working-periods-and-breaks/working-periods-and-breaks.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WorkingTimeAndExpectedEndTimeComponent } from './working-time-and-expected-end-time/working-time-and-expected-end-time.component';
+import { ControlsBarComponent } from './controls-bar/controls-bar.component';
+import { InputTimeModalComponent } from './common/input-time-modal/input-time-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     StatusBarComponent,
     HeaderComponent,
     InputTimeModalComponent,
+    ControlsBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
     WorkingTimeChartComponent,
+    WorkingTimeAndExpectedEndTimeComponent,
     WorkingPeriodsAndBreaksComponent,
     ReactiveFormsModule,
   ],

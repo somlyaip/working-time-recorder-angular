@@ -1,0 +1,36 @@
+<div class="flex gap-x-2">
+  @if (stateMachine.canStartWorking()) {
+    <button
+      (click)="startWorking()"
+      class="bg-amber-300 p-2 rounded hover:bg-amber-400"
+    >
+      Start working
+    </button>
+  }
+  @if (stateMachine.canStopWorking()) {
+    <button
+      (click)="stopWorking()"
+      class="bg-amber-300 p-2 rounded hover:bg-amber-400"
+    >
+      Stop working
+    </button>
+  }
+  @if (stateMachine.canTakeABreak()) {
+    <button
+      (click)="takeABreak()"
+      class="bg-amber-300 p-2 rounded hover:bg-amber-400"
+    >
+      Take a break
+    </button>
+  }
+  @if (stateMachine.canFinishBreak()) {
+    <button
+      (click)="finishBreak()"
+      class="bg-amber-300 p-2 rounded hover:bg-amber-400"
+    >
+      Finish break
+    </button>
+  }
+</div>
+
+<app-input-time-modal #inputTimeModal />

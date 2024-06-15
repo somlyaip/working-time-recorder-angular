@@ -39,7 +39,7 @@ export class InputTimeModalComponent {
 
     if (this.timeForm.valid) {
       if (typeof this.callback != 'function') {
-        console.log(
+        console.error(
           `callback is not a function. It is: '${typeof this.callback}'`,
         );
         return;

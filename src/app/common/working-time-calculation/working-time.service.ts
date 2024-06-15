@@ -40,13 +40,8 @@ export class WorkingTimeService {
 
   // TODO: use optional or any other solution instead of ... | undefined
   calculateWorkingTimeRecord(): WorkingTimeRecord | undefined {
-    console.log('workingPeriods:');
-    console.log(this.#workingPeriods);
-    console.log('takingBreakPeriods:');
-    console.log(this.#takingBreakPeriods);
-
     if (this.#workingPeriods.length == 0) {
-      console.log(
+      console.error(
         'You have to set at least one working period before start recalculation',
       );
       return undefined;

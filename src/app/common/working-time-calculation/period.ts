@@ -29,7 +29,7 @@ export default class Period {
 
     const millisecondsElapsed =
       this.#endDate.getTime() - this.#startDate.getTime();
-    return Math.round(millisecondsElapsed / 1000 / 60);
+    return Math.floor(millisecondsElapsed / 1000 / 60);
   }
 
   toTime(): Time {
