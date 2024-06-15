@@ -5,7 +5,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: './status-bar.component.html',
 })
 export class StatusBarComponent {
-
   @Input() isWorkingNow: boolean = false;
-
 }

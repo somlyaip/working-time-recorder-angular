@@ -8,10 +8,9 @@ describe('WorkingTimeAndExpectedEndTimeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WorkingTimeAndExpectedEndTimeComponent]
-    })
-    .compileComponents();
-    
+      imports: [WorkingTimeAndExpectedEndTimeComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(WorkingTimeAndExpectedEndTimeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

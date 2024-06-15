@@ -8,7 +8,6 @@ import { StateMachine } from '../common/states/state-machine';
   templateUrl: './controls-bar.component.html',
 })
 export class ControlsBarComponent {
-
   @Output() workStartedOrBreakFinished = new EventEmitter<void>();
   @Output() workFinishedOrBreakTaken = new EventEmitter<void>();
 

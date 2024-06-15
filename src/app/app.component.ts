@@ -60,8 +60,9 @@ export class AppComponent implements OnDestroy {
     this.workedSoFar = calculatedRecord?.worked;
 
     if (calculatedRecord && calculatedRecord.remained.totalMinutes > 0) {
-      this.expectedEndTimeOfWork =
-        this.getNowIncrementedWith(calculatedRecord?.remained);
+      this.expectedEndTimeOfWork = this.getNowIncrementedWith(
+        calculatedRecord?.remained,
+      );
     } else {
       this.expectedEndTimeOfWork = undefined;
     }
@@ -75,7 +76,7 @@ export class AppComponent implements OnDestroy {
     incremented.setTime(incremented.getTime() + millisecondsToAdd);
     return {
       hours: incremented.getHours(),
-      minutes: incremented.getMinutes()
+      minutes: incremented.getMinutes(),
     };
   }
 

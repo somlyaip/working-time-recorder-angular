@@ -6,7 +6,7 @@ import { Time } from '@angular/common';
   selector: 'app-working-time-and-expected-end-time',
   standalone: true,
   imports: [],
-  templateUrl: './working-time-and-expected-end-time.component.html'
+  templateUrl: './working-time-and-expected-end-time.component.html',
 })
 export class WorkingTimeAndExpectedEndTimeComponent {
   @Input() isWorkingNow: boolean = false;

@@ -5,13 +5,13 @@
   <app-controls-bar
     (workStartedOrBreakFinished)="workStartedOrBreakFinished()"
     (workFinishedOrBreakTaken)="workFinishedOrBreakTaken()"
-    />
+  />
   @if (workedSoFar !== undefined) {
     <app-working-time-and-expected-end-time
       [isWorkingNow]="isWorkingNow"
       [workedSoFar]="workedSoFar"
       [expectedEndTimeOfWork]="expectedEndTimeOfWork"
-      />
+    />
   }
 </div>
 <app-working-periods-and-breaks />
