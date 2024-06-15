@@ -65,6 +65,8 @@ export class AppComponent implements OnDestroy {
     } else {
       this.expectedEndTimeOfWork = undefined;
     }
+
+    this.workingTimeRecord = calculatedRecord;
   }
 
   private getNowIncrementedWith(duration: Duration): Time {
