@@ -43,4 +43,8 @@ export default class Period {
   toDuration(): Duration {
     return new Duration(this.totalMinutes);
   }
+
+  clone(): Period {
+    return new Period(this.startDate, this.endDate);
+  }
 }

@@ -2,7 +2,7 @@
   <p class="text-lg font-semibold m-2 text-gray-800">
     {{ isWorkingNow ? 'Working' : 'Not working' }}
   </p>
-  <div class="flex gap-x-1">
+  <div class="flex gap-x-2">
     @if (stateMachine.canStartWorking()) {
       <button
         (click)="startWorking()"
@@ -36,7 +36,7 @@
       </button>
     }
   </div>
-  @if (workingTimeRecord !== undefined) {
+  @if (workedSoFar !== undefined) {
     <p class="text-center pt-4">
       You
       @if (isWorkingNow) {
@@ -44,8 +44,16 @@
       } @else {
         have worked
       }
-      {{ workingTimeRecord!.worked.hours }} hours and
-      {{ workingTimeRecord!.worked.minutes }} minutes
+      @if (workedSoFar!.hours && workedSoFar!.hours > 0) {
+        {{ workedSoFar!.hours }} hours and
+      }
+      {{ workedSoFar!.minutes }} minutes.
+      <br>
+      @if (isWorkingNow && expectedEndTimeOfWork) {
+        It looks like you'll finish work at about
+        {{ expectedEndTimeOfWork!.hours }}:{{ expectedEndTimeOfWork!.minutes }}.
+      }
+
     </p>
   }
   <app-input-time-modal #inputTimeModal />

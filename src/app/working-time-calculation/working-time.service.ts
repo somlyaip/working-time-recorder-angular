@@ -80,4 +80,11 @@ export class WorkingTimeService {
           : new Duration(0),
     };
   }
+
+  clone(): WorkingTimeService {
+    const clonedOne = new WorkingTimeService();
+    clonedOne.#takingBreakPeriods = [...this.#takingBreakPeriods.map(p => p.clone())];
+    clonedOne.#workingPeriods = [...this.#workingPeriods.map(p => p.clone())];
+    return clonedOne;
+  }
 }
