@@ -1,23 +1,23 @@
 <div class="flex gap-x-2">
   @if (stateMachine.canStartWorking()) {
-  <button (click)="startWorking()" class="bg-amber-300 p-2 rounded hover:bg-amber-400">
+  <app-button (buttonClick)="startWorking()" color="primary">
     Start working
-  </button>
+  </app-button>
   }
   @if (stateMachine.canStopWorking()) {
-  <button (click)="stopWorking()" class="bg-amber-300 p-2 rounded hover:bg-amber-400">
+  <app-button (buttonClick)="stopWorking()" color="primary">
     Stop working
-  </button>
+  </app-button>
   }
   @if (stateMachine.canTakeABreak()) {
-  <button (click)="takeABreak()" class="bg-amber-300 p-2 rounded hover:bg-amber-400">
+  <app-button (buttonClick)="takeABreak()" color="primary">
     Take a break
-  </button>
+  </app-button>
   }
   @if (stateMachine.canFinishBreak()) {
-  <button (click)="finishBreak()" class="bg-amber-300 p-2 rounded hover:bg-amber-400">
+  <app-button (buttonClick)="finishBreak()" color="primary">
     Finish break
-  </button>
+  </app-button>
   }
 </div>
 

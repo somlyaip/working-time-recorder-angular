@@ -7,11 +7,12 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { ButtonComponent } from '../controls/button/button.component';
 
 @Component({
   selector: 'app-input-time-modal',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
   templateUrl: './input-time-modal.component.html',
 })
 export class InputTimeModalComponent {

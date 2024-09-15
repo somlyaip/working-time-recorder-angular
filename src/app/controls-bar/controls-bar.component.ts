@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { InputTimeModalComponent } from '../common/input-time-modal/input-time-modal.component';
 import { Time } from '@angular/common';
 import { StateMachine } from '../common/states/state-machine';
+import { ButtonComponent } from '../common/controls/button/button.component';
 
 @Component({
   selector: 'app-controls-bar',
   standalone: true,
-  imports: [CommonModule, InputTimeModalComponent],
+  imports: [CommonModule, InputTimeModalComponent, ButtonComponent],
   templateUrl: './controls-bar.component.html',
 })
 export class ControlsBarComponent {
