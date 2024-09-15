@@ -1,17 +1,20 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { InputTimeModalComponent } from '../common/input-time-modal/input-time-modal.component';
 import { Time } from '@angular/common';
 import { StateMachine } from '../common/states/state-machine';
 
 @Component({
   selector: 'app-controls-bar',
+  standalone: true,
+  imports: [CommonModule, InputTimeModalComponent],
   templateUrl: './controls-bar.component.html',
 })
 export class ControlsBarComponent {
   @Output() workStartedOrBreakFinished = new EventEmitter<void>();
   @Output() workFinishedOrBreakTaken = new EventEmitter<void>();
 
-  @ViewChild('inputTimeModal') inputTimeModal!: InputTimeModalComponent;
+  @ViewChild(InputTimeModalComponent) inputTimeModal!: InputTimeModalComponent;
 
   constructor(public stateMachine: StateMachine) {}
 

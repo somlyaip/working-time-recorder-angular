@@ -1,9 +1,17 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Time } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-input-time-modal',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './input-time-modal.component.html',
 })
 export class InputTimeModalComponent {

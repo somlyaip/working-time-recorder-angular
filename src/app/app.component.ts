@@ -1,11 +1,28 @@
 import { Component, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import WorkingTimeRecord from './common/working-time-calculation/working-time-record';
 import { WorkingTimeService } from './common/working-time-calculation/working-time.service';
 import { Time } from '@angular/common';
 import Duration from './common/working-time-calculation/duration';
+import { HeaderComponent } from './header/header.component';
+import { WorkingTimeChartComponent } from './working-time-chart/working-time-chart.component';
+import { StatusBarComponent } from './status-bar/status-bar.component';
+import { ControlsBarComponent } from './controls-bar/controls-bar.component';
+import { WorkingTimeAndExpectedEndTimeComponent } from './working-time-and-expected-end-time/working-time-and-expected-end-time.component';
+import { WorkingPeriodsAndBreaksComponent } from './working-periods-and-breaks/working-periods-and-breaks.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    HeaderComponent,
+    WorkingTimeChartComponent,
+    StatusBarComponent,
+    ControlsBarComponent,
+    WorkingTimeAndExpectedEndTimeComponent,
+    WorkingPeriodsAndBreaksComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
